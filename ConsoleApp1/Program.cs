@@ -1,9 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+//per database
 using System.Data.Entity;
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EF_Config
 {
@@ -38,11 +41,21 @@ namespace EF_Config
         }
     }
 
+
+
     //creiamouna classe che definiràun'entità
+    [Table("Users")] //imposto il nome della tabella
     class User
     {
+        [Key] //imposta questa colonna come PK
         public int Id { get; set; }
+
+        [MaxLength(50)]
+        [Required] //campo obbligatorio - NOT NULL
         public string Name { get; set; }
+
+        //con questo attributo posso cambiare il numero del varchar
+        [MaxLength(50)]
         public string Address { get; set; }
     }
 }
